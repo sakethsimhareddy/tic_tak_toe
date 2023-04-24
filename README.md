@@ -2,6 +2,16 @@
 This is a Python program that uses the tkinter library to create a graphical user interface (GUI) for a tic-tac-toe game.
 The game has two modes: single player and two player. 
 
+
+
+<img width="191" alt="Screenshot 2023-04-24 141204" src="https://user-images.githubusercontent.com/130767932/233945470-8e7d9a8f-6509-4cc8-87a4-1070533a5387.png">
+
+
+
+
+<img width="271" alt="Screenshot 2023-04-24 141232" src="https://user-images.githubusercontent.com/130767932/233945551-b4b6be37-192d-4086-958e-cd9ca8714dc5.png">
+
+
 The game starts by creating a Tkinter window and setting its title to "TIC TAK TOC". 
 The game board is represented using nine Tkinter buttons, arranged in a 3x3 grid. 
 The game board is a 3x3 grid of buttons that players click to make their moves.
