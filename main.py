@@ -6,7 +6,7 @@ root = Tk()
 root.title("TIC TAK TOC")
 game = True
 
-
+global b_1, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
 def button(mode):
     global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
     b_1 = Button(root, text=" ", command=lambda: click(b_1, mode), padx=50, pady=50, font=30)
@@ -19,7 +19,7 @@ def button(mode):
     b_8 = Button(root, text=" ", command=lambda: click(b_8, mode), padx=50, pady=50, font=30)
     b_9 = Button(root, text=" ", command=lambda: click(b_9, mode), padx=50, pady=50, font=30)
     b_exit = Button(root, text="exit", command=root.quit, padx=30, pady=20, font=20)
-    b_reset = Button(root, text="reset ", command=reset, padx=30, pady=20, font=20)
+    b_reset = Button(root, text="reset ", command=lambda: reset(mode), padx=30, pady=20, font=20)
 
     b_7.grid(row=2, column=0)
     b_8.grid(row=2, column=1)
@@ -35,7 +35,6 @@ def button(mode):
 
 
 def full_board(mode):
-    global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
 
     if b_1["text"] != " " and b_2["text"] != " " and b_3["text"] != " " and b_4["text"] != " " and b_5[
         "text"] != " " and b_6["text"] != " " and b_7["text"] != " " and b_8["text"] != " " and b_9["text"] != " ":
@@ -44,10 +43,9 @@ def full_board(mode):
 
 
 def reset(mode):
-    global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9, b_reset, b_exit
     global lable
     global game
-
+    global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
     game = True
 
     lable.grid_forget()
@@ -89,7 +87,6 @@ def reset(mode):
 
 
 def win(mode):
-    global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
     if b_1["text"] == "X" and b_2["text"] == "X" and b_3["text"] == "X":
         b_1.config(bg="red")
         b_2.config(bg="red")
@@ -263,10 +260,10 @@ def win_checker(p):
 
 def click(b, mode):
     global game
-    global b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9
+   
 
     if mode == 2:
-        if b["text"] == " " and game == True:
+        if b["text"] == " " and game is True:
             b["text"] = "X"
             game = False
             lable = Label(root, text="player 2", width=30)
@@ -274,7 +271,7 @@ def click(b, mode):
             win(mode)
             full_board(mode)
 
-        elif b["text"] == " " and game == False:
+        elif b["text"] == " " and game is False:
             b["text"] = "O"
             game = True
 
@@ -285,7 +282,7 @@ def click(b, mode):
         else:
             messagebox.showinfo("error", "invalid choice")
     elif mode == 1:
-        if b["text"] == " " and game == True:
+        if b["text"] == " " and game is True:
             b["text"] = "X"
             game = False
             win(mode)
@@ -295,7 +292,7 @@ def click(b, mode):
             full_board(mode)
 
         for i in (b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9):
-            if i["text"] == " " and game == False:
+            if i["text"] == " " and game is False:
                 i["text"] = "O"
                 if win_checker("O"):
                     i["text"] = "O"
@@ -304,7 +301,7 @@ def click(b, mode):
                     i["text"] = " "
 
         for i in (b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9):
-            if i["text"] == " " and game == False:
+            if i["text"] == " " and game is False:
                 i["text"] = "X"
                 if win_checker("X"):
                     i["text"] = "O"
@@ -312,7 +309,7 @@ def click(b, mode):
                 else:
                     i["text"] = " "
 
-        if game == False:
+        if game is False:
             l = (b_1, b_2, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9)
             while not game:
                 j = random.randint(0, 8)
